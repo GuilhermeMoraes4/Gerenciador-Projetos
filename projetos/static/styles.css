@@ -1,0 +1,161 @@
+/* Estilo do cabeçalho */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo dos botões */
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Estilo do formulário */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px;
+
+}
+.welcome {
+    color: #ffffff;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;  
+    height: 2vh;
+}
+
+.btns {
+    color: #ffffff;
+    flex-direction: inline;
+    justify-content: center;
+    display: flex;
+    padding-top: 25px;
+
+}
+
+.btn_login {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff8800;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra */
+    margin-right: 5vw;
+}
+
+.btn_projetos {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff8800;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra */
+}
+
+.btn_atividades {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff8800;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra */
+    margin-left: 5vw;
+
+}
+
+/* Estilo do título h1 */
+h1 {
+    color: #050505;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+}
+
+/* Estilo do titulo h2 */
+h2 {
+    text-align: center;
+    padding-top: 50px;
+}
+
+/* Estilo da pesquisa */
+.pesquisa {
+    text-align: center;
+}
+
+.pesquisa-txt {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Estilo dos containeres parentes referentes ao dashboard */
+.parent-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Estilo dos containeres filhos referentes ao dashboard */
+.chart-container {
+    width: 30%; /* Ajuste conforme necessário */
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 28px;
+    margin-left: 170px;
+    margin-right: 170px;
+}
+
+/* Estilo do gráfico de pizza */
+#pieChart {
+    width: 20%;
+    height: auto;
+    
+}
+
+/* Estilo do gráfico de barras */
+#barChart {
+    width: 20%;
+    height: auto;
+   
+}
+
+#pesquisa {
+    width: 48vw;
+    height: 3vh;
+}

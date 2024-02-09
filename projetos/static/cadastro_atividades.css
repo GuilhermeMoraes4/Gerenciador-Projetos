@@ -1,0 +1,112 @@
+/* Estilo global do corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+    margin: 0;
+}
+
+/* Estilo do título h2 */
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo dos links no cabeçalho */
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilo dos botões do tipo "button" */
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Efeito hover nos botões do tipo "button" */
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Estilo da imagem no cabeçalho */
+header img {
+    max-width: 50px;
+    height: auto;
+    margin-left: auto;
+}
+
+/* Estilo do formulário */
+form {
+    width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Estilo das etiquetas do formulário */
+form label {
+    width: 48%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Estilo dos campos de entrada, área de texto e seleção do formulário */
+form input, form textarea, form select {
+    width: 48%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+
+/* Estilo da área de texto do formulário */
+form textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+/* Estilo do botão de envio do formulário */
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Efeito hover no botão de envio do formulário */
+form input[type="submit"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Estilo da seleção do formulário */
+form select {
+    width: calc(48% + 12px);  /* Ajuste a largura do select conforme necessário */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}

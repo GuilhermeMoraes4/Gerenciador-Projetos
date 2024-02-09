@@ -1,0 +1,114 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="en"> <!-- Declaração do idioma principal da página -->
+
+<head>
+    <meta charset="UTF-8"> <!-- Especifica o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração da visualização em dispositivos móveis -->
+    <title>Gerenciador de Projetos</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> <!-- Importa o arquivo de estilo CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Importa a biblioteca Chart.js para criar gráficos -->
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <a href="/projetos/">
+                <button class="btn-header" type="button">Lista de Projetos</button>
+            </a>
+            <a href="/atividades/">
+                <button class="btn-header" type="button">Lista de Atividades</button>
+            </a>
+            <a href="/logout/">
+                <button class="btn-header" type="button">Logout</button>
+            </a>
+        </div>
+        <div class="header-right">
+            <form action="{% url 'resultado_pesquisa' %}" method="get">
+                <label for="pesquisa"></label>
+                <input type="text" id="pesquisa" name="q" placeholder="Pesquisar um Projeto"> <!-- Campo de pesquisa por projeto -->
+            </form>
+        </div>
+    </header>
+
+    <h1>Bem-vindo ao Gerenciador de Projetos</h1> <!-- Título principal -->
+
+    <h2>Resumo dos Projetos:</h2> <!-- Título da seção -->
+
+    <!-- Contêiner Pai -->
+    <div class="parent-container">
+
+        <!-- Contêiner do Gráfico de Barras -->
+        <div class="chart-container">
+            <canvas id="barChart" width="100" height="100"></canvas> <!-- Elemento Canvas para o gráfico de barras -->
+        </div>
+
+        <!-- Contêiner do Gráfico de Pizza -->
+        <div class="chart-container">
+            <canvas id="pieChart" width="100" height="100"></canvas> <!-- Elemento Canvas para o gráfico de pizza -->
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusCounts = {{ status_counts|safe }}; // Obtém a contagem de projetos por status do contexto do Django
+            const areaCounts = {{ area_counts|safe }}; // Obtém a contagem de projetos por área do contexto do Django
+
+            // Função para contar projetos por propriedade específica
+            const contarPorPropriedade = (projetos, propriedade) => {
+                const counts = {};
+                projetos.forEach(projeto => {
+                    const valor = projeto[propriedade];
+                    counts[valor] = (counts[valor] || 0) + 1;
+                });
+                return counts;
+            };
+
+            // Configuração do gráfico de barras
+            const barChartCtx = document.getElementById('barChart').getContext('2d');
+            new Chart(barChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(statusCounts),
+                    datasets: [{
+                        label: 'Projetos por Status',
+                        data: Object.values(statusCounts),
+                        backgroundColor: '#d35a0a', // Cor de fundo do gráfico de barras
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            // Configuração do gráfico de pizza
+            const pieChartCtx = document.getElementById('pieChart').getContext('2d');
+            new Chart(pieChartCtx, {
+                type: 'pie',
+                data: {
+                    labels: Object.keys(areaCounts),
+                    datasets: [{
+                        data: Object.values(areaCounts),
+                        backgroundColor: [
+                            '#d35a0a',  
+                            '#B54C07',
+                            '#C1692F',
+                            '#D47F47',
+                        ]
+                    }]
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html>
+<head>
+    <title>Cadastro de Atividades</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="{% static 'cadastro_atividades.css' %}"> <!-- Importa o arquivo de estilo CSS -->
+</head>
+<body>
+
+    <header>
+        <div>
+            <a href="/index/">
+                <button type="button">Inicio</button> <!-- Botão para ir à página inicial -->
+            </a>
+    
+            <a href="/atividades/">
+                <button type="button">Lista de Atividades</button> <!-- Botão para ir à lista de atividades -->
+            </a>
+            <a href="/projetos/">
+                <button type="button">Lista de Projetos</button> <!-- Botão para ir à lista de projetos -->
+            </a>
+            <a href="/cadastro_projetos/">
+                <button type="button">Novo Projeto</button> <!-- Botão para criar um novo projeto -->
+            </a>
+            <a href="/logout/">
+                <button type="button">Logout</button> <!-- Botão para realizar logout -->
+            </a>
+        </div>
+        </div>
+    </header>
+    
+
+<h2>Cadastre / Edite uma Atividade</h2> <!-- Título da seção -->
+
+<form method="post" 
+      action="{% if atividade %}{% url 'update_atividade' atividade.id %}{% else %}{% url 'cadastro_atividades' %}{% endif %}"> <!-- Formulário para cadastrar ou editar uma atividade -->
+    {% csrf_token %} <!-- Token de segurança contra ataques CSRF (Cross-Site Request Forgery) -->
+
+    <label for="nome">Nome da Atividade:</label>
+    <input type="text" id="nome" name="nome" value="{{ atividade.nome }}" required> <!-- Campo de entrada para o nome da atividade -->
+
+    <label for="descricao">Descrição da Atividade:</label>
+    <textarea id="descricao" name="descricao" required>{{ atividade.descricao }}</textarea> <!-- Campo de entrada para a descrição da atividade -->
+
+    <label for="projeto">Projeto:</label>
+    <select id="projeto" name="projeto" required> <!-- Campo de seleção para escolher um projeto -->
+        {% for projeto in projetos %}
+            <option value="{{ projeto.id }}" {% if atividade.projeto_id == projeto.id %}selected{% endif %}>{{ projeto.titulo }}</option> <!-- Opções do projeto, com o projeto atual selecionado se aplicável -->
+        {% endfor %}
+    </select>
+
+    <label for="status_atividade">Status:</label>
+    <select id="status_atividade" name="status_atividade" required class="form-control"> <!-- Campo de seleção para o status da atividade -->
+        {% for value, display_value in form.fields.status_atividade.choices %}
+            <option value="{{ value }}" {% if atividade.status_atividade == value %}selected{% endif %}>{{ display_value }}</option> <!-- Opções do status, com o status atual selecionado se aplicável -->
+        {% endfor %}
+    </select>
+
+    <label for="horas_trabalhadas">Horas Trabalhadas:</label>
+    <input type="number" id="horas_trabalhadas" name="horas_trabalhadas" value="{{ atividade.horas_trabalhadas }}" required> <!-- Campo de entrada para as horas trabalhadas -->
+
+    <label for="data_da_atividade">Data da Atividade:</label>
+    <input type="date" id="data_da_atividade" name="data_da_atividade" value="{{ atividade.data_da_atividade|date:'Y-m-d' }}" required> <!-- Campo de entrada para a data da atividade, com formato pré-definido -->
+
+    <label for="responsavel">Responsável:</label>
+    <input type="text" id="responsavel" name="responsavel" value="{{ atividade.responsavel }}" required> <!-- Campo de entrada para o responsável pela atividade -->
+
+    <input type="submit" value="Salvar"> <!-- Botão de envio do formulário -->
+</form>
+
+</body>
+</html>

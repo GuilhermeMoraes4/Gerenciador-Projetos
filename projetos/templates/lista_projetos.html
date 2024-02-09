@@ -1,0 +1,80 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="en"> <!-- Declaração do idioma principal da página -->
+<head>
+    <meta charset="UTF-8"> <!-- Especifica o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração da visualização em dispositivos móveis -->
+    <title>Lista de Projetos</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="{% static 'lista_projetos.css' %}"> <!-- Importa o arquivo de estilo CSS -->
+</head>
+<body>
+
+<header>
+    <div>
+        <!-- Links para diferentes seções da aplicação -->
+        <a href="/index/"><button type="button">Inicio</button></a>
+        <a href="/atividades/"><button type="button">Lista de Atividades</button></a>
+        <a href="/cadastro_projetos/"><button type="button">Novo Projeto</button></a>
+        <a href="/cadastro_atividades/"><button type="button">Nova Atividade</button></a>
+        <a href="/logout/"><button type="button">Logout</button></a>
+    </div>
+</header>
+
+<h1>Lista de Projetos</h1> <!-- Título principal da página -->
+
+<table border="1"> <!-- Tabela para exibir a lista de projetos -->
+    <thead>
+        <tr>
+            <!-- Cabeçalho da tabela -->
+            <th>ID</th>
+            <th>Prioridade</th>
+            <th>Título</th>
+            <th>Status</th>
+            <th>Área</th>
+            <th>Ação no Sprint</th>
+            <th>Tipo do Projeto</th>
+            <th>Data de Início</th>
+            <th>Prazo de Conclusão</th>
+            <th>Proprietário do Projeto</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <script>
+            // Função JavaScript para confirmar a exclusão de um projeto
+            function confirmarExclusao(id_projeto) {
+                var resposta = confirm("Tem certeza que deseja excluir este projeto?");
+                
+                if (resposta) {
+                    // Redireciona para a URL de exclusão do projeto com o ID correspondente
+                    window.location.href = "{% url 'delete_projeto' 0 %}".replace('0', id_projeto);
+                }
+            }
+        </script>
+        {% for projeto in projetos %}
+            <!-- Loop para iterar sobre os projetos e exibi-los na tabela -->
+            <tr>
+                <td>{{ projeto.id }}</td>
+                <td>{{ projeto.prioridade }}</td>
+                <td>{{ projeto.titulo }}</td>
+                <td>{{ projeto.status }}</td>
+                <td>{{ projeto.area }}</td>
+                <td>{{ projeto.acao_no_sprint }}</td>
+                <td>{{ projeto.tipo_de_projeto }}</td>
+                <td>{{ projeto.data_inicio }}</td>
+                <td>{{ projeto.prazo }}</td>
+                <td>{{ projeto.proprietario }}</td> 
+                <td class="actions">
+                    <!-- Botões de ação para excluir, editar e visualizar projeto -->
+                    <a href="javascript:void(0);" onclick="confirmarExclusao({{ projeto.id }})">Excluir</a>
+                    <a href="{% url 'update_projeto' projeto.id %}">Editar</a>
+                    <a href="{% url 'detalhes_projeto' projeto.id %}">Visualizar</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

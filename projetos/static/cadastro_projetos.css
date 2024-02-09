@@ -1,0 +1,96 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between; /* Para alinhar os botões à esquerda e o logo à direita */
+    align-items: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px; /* Espaço entre os botões */
+}
+
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Adicione a propriedade background para o logo */
+header img {
+    max-width: 50px; /* Defina a largura máxima da imagem */
+    height: auto; /* Mantenha a proporção da imagem */
+}
+
+form {
+    width: 600px; /* Ajuste a largura total do formulário conforme necessário */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens do flex container quebrem para a próxima linha se não houver espaço suficiente */
+    justify-content: space-between; /* Distribui os itens igualmente entre as linhas */
+}
+
+form label {
+    width: 48%; /* Define a largura dos rótulos */
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 48%; /* Define a largura dos campos de entrada */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+
+form input[type="submit"] {
+    width: 100%; /* Preenche a largura do contêiner do formulário */
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #000a01fa;
+}
+
+form select {
+    width: 50%; /* Define a largura dos campos de entrada */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    outline: none;
+}
+

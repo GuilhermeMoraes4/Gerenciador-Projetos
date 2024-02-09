@@ -1,0 +1,86 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="en"> <!-- Declaração do idioma principal da página -->
+<head>
+    <meta charset="UTF-8"> <!-- Especifica o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração da visualização em dispositivos móveis -->
+    <link rel="stylesheet" href="{% static 'detalhes_projeto.css' %}"> <!-- Importa o arquivo de estilo CSS específico para detalhes do projeto -->
+    <title>Detalhe do Projeto</title> <!-- Título da página exibido na aba do navegador -->
+</head>
+<body>
+    
+    <header>
+        <div>
+            <a href="/index/">
+                <button type="button">Inicio</button> <!-- Botão para ir à página inicial -->
+            </a>
+
+            <a href="/atividades/">
+                <button type="button">Lista de Atividades</button> <!-- Botão para ir à lista de atividades -->
+            </a>
+            <a href="/projetos/">
+                <button type="button">Lista de Projetos</button> <!-- Botão para ir à lista de projetos -->
+            </a>
+            <a href="/cadastro_projetos/">
+                <button type="button">Novo Projeto</button> <!-- Botão para criar um novo projeto -->
+            </a>
+            <a href="/cadastro_atividades/">
+                <button type="button">Nova Atividade</button> <!-- Botão para criar uma nova atividade -->
+            </a>
+            <a href="/logout/">
+                <button type="button">Logout</button> <!-- Botão para realizar logout -->
+            </a>
+        </div>
+        </div>
+    </header>
+
+    <main class="container bg-light rounded my-2" style="--bs-bg-opacity: .5"> <!-- Seção principal com estilos específicos -->
+        <h1 class="text-center">Detalhes do Projeto</h1> <!-- Título da seção -->
+        <div class="container bg-light rounded my-3">
+            <p class="mb-2"><strong>Título:</strong> {{ projeto.titulo }}</p> <!-- Exibição do título do projeto -->
+            <p class="mb-2"><strong>Status:</strong> {{ projeto.status }}</p> <!-- Exibição do status do projeto -->
+            <p class="mb-2"><strong>Área:</strong> {{ projeto.area }}</p> <!-- Exibição da área do projeto -->
+            <p class="mb-2"><strong>Tipo de Projeto:</strong> {{ projeto.tipo_de_projeto }}</p> <!-- Exibição do tipo do projeto -->
+            <p class="mb-2"><strong>Observação:</strong> {{ projeto.observacao }}</p> <!-- Exibição da observação do projeto -->
+            <p class="mb-2"><strong>Proprietário:</strong> {{ projeto.proprietario }}</p> <!-- Exibição do proprietário do projeto -->
+        </div>
+        
+        {% if atividades %}
+        <h1 class="text-center">Atividades do Projeto</h1> <!-- Título da seção de atividades -->
+        <div class="container bg-light rounded my-3">
+            {% for atividade in atividades %}
+                <div class="atividade{% if forloop.first %} atividade-visivel{% endif %}"> <!-- Div que contém uma atividade, com a primeira atividade visível por padrão -->
+                    <p class="mb-2"><strong>Atividade:</strong> {{ atividade.nome }}</p> <!-- Exibição do nome da atividade -->
+                        <p class="mb-2"><strong>Descrição da Atividade:</strong> {{ atividade.descricao }}</p> <!-- Exibição da descrição da atividade -->
+                        <p class="mb-2"><strong>Status da Atividade:</strong> {{ atividade.status_atividade }}</p> <!-- Exibição do status da atividade -->
+                        <p class="mb-2"><strong>Responsável da Atividade:</strong> {{ atividade.responsavel }}</p> <!-- Exibição do responsável pela atividade -->
+                        <p class="mb-2"><strong>Horas Trabalhadas:</strong> {{ atividade.horas_trabalhadas }}</p> <!-- Exibição das horas trabalhadas na atividade -->
+                        <p class="mb-2"><strong>Data da Atividade:</strong> {{ atividade.data_da_atividade }}</p> <!-- Exibição da data da atividade -->
+                    </div>
+                {% endfor %}
+
+                <div class="text-center my-3">
+                    {% if atividades|length > 1 %}
+                    <button id="proxima-atividade" class="btn btn-primary">Próxima Atividade Vinculada</button> <!-- Botão para visualizar a próxima atividade vinculada -->
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <p>Nenhuma atividade associada a este projeto.</p> <!-- Mensagem exibida quando não há atividades associadas ao projeto -->
+        {% endif %}
+    </main>
+
+    <script>
+        var atividades = document.querySelectorAll('.atividade'); // Seleciona todas as atividades
+        var index = 0;
+
+        document.getElementById('proxima-atividade').addEventListener('click', function () { // Adiciona um evento de clique ao botão "Próxima Atividade Vinculada"
+            atividades[index].style.display = 'none'; // Oculta a atividade atual
+            index = (index + 1) % atividades.length; // Atualiza o índice para a próxima atividade
+            atividades[index].style.display = 'block'; // Exibe a próxima atividade
+        });
+    </script>
+</body>
+</html>

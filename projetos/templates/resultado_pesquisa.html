@@ -1,0 +1,43 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html lang="en"> <!-- Declaração do idioma principal da página -->
+<head>
+    <meta charset="UTF-8"> <!-- Especifica o conjunto de caracteres como UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configuração da visualização em dispositivos móveis -->
+    <link rel="stylesheet" href="{% static 'resultado_pesquisa.css' %}"> <!-- Importa o arquivo de estilo CSS -->
+    <title>Resultados da Pesquisa</title> <!-- Título da página exibido na aba do navegador -->
+</head>
+<body>
+    <header>
+        <div>
+            <!-- Links para diferentes seções da aplicação -->
+            <a href="/index/"><button type="button">Inicio</button></a>
+            <a href="/atividades/"><button type="button">Lista de Atividades</button></a>
+            <a href="/projetos/"><button type="button">Lista de Projetos</button></a>
+            <a href="/cadastro_projetos/"><button type="button">Novo Projeto</button></a>
+            <a href="/cadastro_atividades/"><button type="button">Nova Atividade</button></a>
+            <a href="/logout/"><button type="button">Logout</button></a>
+        </div>
+    </header>
+
+    <div class="container-bg">
+        <h1>Resultados da Pesquisa</h1> <!-- Título principal da página -->
+
+        {% if resultados %}
+            <!-- Lista de resultados -->
+            <ul>
+                {% for projeto in resultados %}
+                    <li>
+                        <!-- Link para detalhes do projeto -->
+                        <h2><a href="{% url 'detalhes_projeto' projeto.id %}">{{ projeto.titulo }}</a></h2>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <!-- Mensagem exibida quando não há resultados -->
+            <p>{{ mensagem }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

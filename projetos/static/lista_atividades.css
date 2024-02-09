@@ -1,0 +1,82 @@
+/* Estilo global do corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+    margin: 0;
+}
+
+/* Estilo do título h1 */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo dos links no cabeçalho */
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilo dos botões do tipo "button" */
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Efeito hover nos botões do tipo "button" */
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Estilo da tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Estilo das células de cabeçalho e dados da tabela */
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Estilo do cabeçalho da tabela */
+th {
+    background-color: #d35a0a;
+    color: #fff;
+}
+
+/* Estilo das ações (links) na tabela */
+.actions a {
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Efeito hover nas ações (links) da tabela */
+.actions a:hover {
+    background-color: #000a01fa;
+}

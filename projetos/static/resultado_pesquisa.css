@@ -1,0 +1,77 @@
+/* Estilo global do corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+    margin: 0;
+}
+
+/* Estilo dos títulos h1 e h2 */
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Estilo dos links no cabeçalho */
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilo dos botões no cabeçalho */
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Efeito hover nos botões */
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+
+/* Estilo do contêiner principal */
+.container-bg {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* Estilo da lista não ordenada */
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo dos itens de lista */
+li {
+    margin-bottom: 20px;
+}
+
+/* Estilo dos links nos títulos h2 */
+h2 a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Efeito hover nos links dentro dos títulos h2 */
+h2 a:hover {
+    text-decoration: underline;
+}

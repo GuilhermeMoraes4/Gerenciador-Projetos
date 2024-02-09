@@ -1,0 +1,84 @@
+{% load static %} <!-- Carrega os arquivos estáticos, como CSS e imagens, para a página -->
+
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML -->
+<html>
+<head>
+    <title>Cadastro de Projetos</title> <!-- Título da página exibido na aba do navegador -->
+    <link rel="stylesheet" href="{% static 'cadastro_projetos.css' %}"> <!-- Importa o arquivo de estilo CSS -->
+</head>
+<body>
+
+    <header>
+        <div>
+            <a href="/index/">
+                <button type="button">Inicio</button> <!-- Botão para ir à página inicial -->
+            </a>
+    
+            <a href="/atividades/">
+                <button type="button">Lista de Atividades</button> <!-- Botão para ir à lista de atividades -->
+            </a>
+            <a href="/projetos/">
+                <button type="button">Lista de Projetos</button> <!-- Botão para ir à lista de projetos -->
+            </a>
+            <a href="/cadastro_atividades/">
+                <button type="button">Nova Atividade</button> <!-- Botão para criar uma nova atividade -->
+            </a>
+            <a href="/logout/">
+                <button type="button">Logout</button> <!-- Botão para realizar logout -->
+            </a>
+        </div>
+        </div>
+    </header>
+    
+
+<h2>Cadastre / Edite um Projeto</h2> <!-- Título da seção -->
+
+<form method="post" 
+      action="{% if projeto %}{% url 'update_projeto' projeto.id %}{% else %}{% url 'cadastro_projetos' %}{% endif %}"> <!-- Formulário para cadastrar ou editar um projeto -->
+    {% csrf_token %} <!-- Token de segurança contra ataques CSRF (Cross-Site Request Forgery) -->
+
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" value="{{ projeto.titulo }}" required> <!-- Campo de entrada para o título do projeto -->
+
+    <label for="prioridade">Prioridade:</label>
+    <input type="number" id="prioridade" name="prioridade" value="{{ projeto.prioridade }}" required> <!-- Campo de entrada para a prioridade do projeto -->
+
+    <label for="acao_no_sprint">Ação no Sprint:</label>
+    <input type="text" id="acao_no_sprint" name="acao_no_sprint" value="{{ projeto.acao_no_sprint }}" required> <!-- Campo de entrada para a ação no sprint do projeto -->
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required> <!-- Campo de seleção para o status do projeto -->
+        {% for value, display_value in form.fields.status.choices %}
+            <option value="{{ value }}" {% if projeto.status == value %}selected{% endif %}>{{ display_value }}</option> <!-- Opções do status, com o status atual selecionado se aplicável -->
+        {% endfor %}
+    </select>
+
+    <label for="area">Área:</label>
+    <input type="text" id="area" name="area" value="{{ projeto.area }}" required> <!-- Campo de entrada para a área do projeto -->
+
+    <label for="tipo_de_projeto">Tipo do Projeto:</label>
+    <input type="text" id="tipo_de_projeto" name="tipo_de_projeto" value="{{ projeto.tipo_de_projeto }}" required> <!-- Campo de entrada para o tipo do projeto -->
+
+    <label for="horas_estimadas">Horas Estimadas:</label>
+    <input type="number" id="horas_estimadas" name="horas_estimadas" value="{{ projeto.horas_estimadas }}" required> <!-- Campo de entrada para as horas estimadas do projeto -->
+
+    <label for="data_inicio">Data de Início:</label>
+    <input type="date" id="data_inicio" name="data_inicio" value="{{ projeto.data_inicio|date:'Y-m-d' }}" required> <!-- Campo de entrada para a data de início do projeto, com formato pré-definido -->
+
+    <label for="prazo">Prazo de Conclusão:</label>
+    <input type="date" id="prazo" name="prazo" value="{{ projeto.prazo|date:'Y-m-d' }}" required> <!-- Campo de entrada para o prazo de conclusão do projeto, com formato pré-definido -->
+
+    <label for="observacao">Observação:</label>
+    <input type="text" id="observacao" name="observacao" value="{{ projeto.observacao }}" required> <!-- Campo de entrada para observações sobre o projeto -->
+
+    <label for="proprietario">Proprietário do Projeto:</label>
+    <input type="text" id="proprietario" name="proprietario" value="{{ projeto.proprietario }}" required> <!-- Campo de entrada para o proprietário do projeto -->
+
+    <label for="custo">Custo Estimado:</label>
+    <input type="number" id="custo" name="custo" value="{{ projeto.custo }}" required> <!-- Campo de entrada para o custo estimado do projeto -->
+
+    <input type="submit" value="Salvar"> <!-- Botão de envio do formulário -->
+</form>
+
+</body>
+</html>

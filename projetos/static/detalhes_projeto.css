@@ -1,0 +1,106 @@
+/* Estilo global do corpo do documento */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0vh; /* Altura mínima da visualização da janela */
+    margin: 0;
+}
+
+/* Estilo do título h1 */
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo do cabeçalho */
+header {
+    background-color: #d35a0a;
+    padding: 10px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Estilo dos links no cabeçalho */
+header a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Estilo da imagem no cabeçalho */
+header img {
+    max-width: 48px;
+    height: auto;
+    margin-left: 2px;
+}
+
+/* Estilo dos botões do tipo "button" */
+button[type="button"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Efeito hover nos botões do tipo "button" */
+button[type="button"]:hover {
+    background-color: #000a01fa;
+}
+
+/* Estilo do contêiner principal */
+.container {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    padding: 20px; /* Adicionado para criar um espaço interno */
+    margin: 20px auto;
+}
+
+/* Estilo da lista não ordenada */
+ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Estilo dos itens de lista */
+li {
+    margin-bottom: 20px;
+}
+
+/* Estilo dos links h2 */
+h2 a {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Efeito hover nos links h2 */
+h2 a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para o botão "Próxima Atividade" */
+#proxima-atividade {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #d35a0a;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 10px; /* Adicionei um espaço entre o botão e o conteúdo anterior */
+}
+
+/* Efeito hover no botão "Próxima Atividade" */
+#proxima-atividade:hover {
+    background-color: #000a01fa;
+}
