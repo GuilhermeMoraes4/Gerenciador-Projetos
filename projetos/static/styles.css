@@ -8,6 +8,12 @@ header {
     color: #fff;
 }
 
+/* Estilo do logotipo */
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
 .header-right {
     display: flex;
     align-items: center;
