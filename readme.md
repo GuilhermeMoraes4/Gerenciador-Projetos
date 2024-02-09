@@ -70,6 +70,10 @@
 <div align="center">
 <img src="https://github.com/GuilhermeMoraes4/Project_Management/blob/main/wiki_images/Cadastre%20um%20projeto.jpg">
 
+## Observação
+
+:heavy_check_mark: Para versionamento do projeto no repositório privado foi utilizado GitFlow para todas as etapas do desenvolvimento, acredito que seja importante para boas práticas do desenvolvimento de software.
+
 ## Desenvolvedor :octocat:
 <p>GuilhermeMoraes4</p>
-<p>VonDerLitch "Kelvin Silveira"</p>
+
